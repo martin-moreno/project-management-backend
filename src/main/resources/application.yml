@@ -1,0 +1,39 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: project-management
+
+  datasource:
+    # URL de conexión a la base de datos PostgreSQL.
+    # Usa una variable de entorno SPRING_DATASOURCE_URL si está definida; de lo contrario, se conecta a localhost:5432/control_proyectos.
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/control_proyectos}
+
+    # Nombre de usuario de la base de datos.
+    # Usa la variable de entorno SPRING_DATASOURCE_USERNAME si existe, o 'admin' por defecto.
+    username: ${SPRING_DATASOURCE_USERNAME:admin}
+
+    # Contraseña del usuario para acceder a la base de datos.
+    # Usa la variable de entorno SPRING_DATASOURCE_PASSWORD si existe, o 'admin123' por defecto.
+    password: ${SPRING_DATASOURCE_PASSWORD:admin123}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+
+  metrics:
+    export:
+      prometheus:
+        enabled: true

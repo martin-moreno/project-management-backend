@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:15
+    container_name: postgres-control-ejecucion
+    restart: always
+    ports:
+      - "5433:5432"  # Puerto externo cambiado a 5433
+    environment:
+      POSTGRES_USER: spauser
+      POSTGRES_PASSWORD: spapass
+      POSTGRES_DB: control_proyectos
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    image: control-ejecucion-backend
+    container_name: control-ejecucion-backend
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/control_proyectos
+      SPRING_DATASOURCE_USERNAME: spauser
+      SPRING_DATASOURCE_PASSWORD: spapass
+
+volumes:
+  postgres_data:
