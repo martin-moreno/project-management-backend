@@ -1,6 +1,14 @@
 server:
   port: 8081
 
+logging:
+  level:
+    org.springframework: DEBUG
+    co.spa.projectmanagement: DEBUG
+
+jwt:
+  secret: GEvjAbIMrYSg0bKzc9puQ2YiHTKby5fd7dAPhyvA/7pVFxgSEWnTU2JYy7diNsJVrXt0OWM2483IsJOnjC4XkA==
+
 spring:
   application:
     name: project-management
@@ -8,7 +16,7 @@ spring:
   datasource:
     # URL de conexión a la base de datos PostgreSQL.
     # Usa una variable de entorno SPRING_DATASOURCE_URL si está definida; de lo contrario, se conecta a localhost:5432/control_proyectos.
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/control_proyectos}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/projectdb}
 
     # Nombre de usuario de la base de datos.
     # Usa la variable de entorno SPRING_DATASOURCE_USERNAME si existe, o 'admin' por defecto.
