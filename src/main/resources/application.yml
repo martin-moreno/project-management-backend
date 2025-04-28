@@ -13,6 +13,24 @@ spring:
   application:
     name: project-management
 
+  jackson:
+    # Activar características para manejar JSON de forma flexible
+    features:
+      # Permite los comentarios en el JSON
+      ALLOW_COMMENTS: true
+      # Permite números con punto decimal al inicio (Ejemplo: .123)
+      ALLOW_LEADING_DECIMAL_POINT_FOR_NUMBERS: true
+      # Permite valores numéricos no definidos
+      ALLOW_NON_NUMERIC_NUMBERS: true
+      # Permite comas al final de los arrays/objetos JSON
+      ALLOW_TRAILING_COMMA: true
+      # Permite valores faltantes
+      ALLOW_MISSING_VALUES: true
+      # Permite caracteres especiales no escapados
+      ALLOW_UNQUOTED_CONTROL_CHARS: true
+      # Permite el uso de comillas simples en lugar de dobles
+      ALLOW_SINGLE_QUOTES: true
+
   datasource:
     # URL de conexión a la base de datos PostgreSQL.
     # Usa una variable de entorno SPRING_DATASOURCE_URL si está definida; de lo contrario, se conecta a localhost:5432/control_proyectos.

@@ -33,8 +33,9 @@ public class SecurityConfig {
                     log.info("Configurando permisos de rutas:");
                     log.info(" -> Permitidas sin autenticación: /api/auth/**");
                     log.info(" -> Requieren autenticación: todas las demás");
-                    auth.requestMatchers("/api/auth/**").permitAll();
-                    auth.anyRequest().authenticated();
+                    auth.requestMatchers("/api/auth/**").permitAll()
+                    .requestMatchers("/api/integrators/**").authenticated() // Protege integradores
+                    .anyRequest().authenticated();
                 })
                 .sessionManagement(sess -> {
                     log.info("Configurando política de sesión: STATELESS");

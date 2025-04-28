@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:3000") // Permitir solo el frontend en localhost:3000
+@CrossOrigin(origins = "http://localhost:5173") // Permitir solo el frontend en localhost:3000
 @RequiredArgsConstructor
 public class AuthController {
 
